@@ -31,3 +31,13 @@ This project uses 3 datasets of adverserial samples:
 And the following benign dataset:
 
 https://www.kaggle.com/datasets/arielzilber/prompt-injection-benign-evaluation-framework
+
+# Notebooks
+
+1. [detecting language model attack](/notebooks/detecting_language_model_attack.ipynb)
+
+2. [generate adverserial suffix dataset](/notebooks/generate_adverserial_suffix_dataset.ipynb)
+
+3. [perphrase attack generation](/notebooks/perphrase_attack_generation.ipynb)
+
+4. [dataset preproccessing](/notebooks/dataset_preproccessing.ipynb)
