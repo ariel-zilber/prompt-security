@@ -1,62 +1,33 @@
 # prompt-security
 
-<a target="_blank" href="https://cookiecutter-data-science.drivendata.org/">
-    <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
-</a>
+Prompt injection is a technique used to manipulate language models or AI systems by providing specially crafted input that causes the system to produce unintended or harmful responses. This form of attack leverages the model's reliance on user input to steer its behavior, potentially leading to security vulnerabilities, misinformation, or other detrimental outcomes. Understanding and mitigating prompt injection is crucial for ensuring the safe and reliable deployment of AI technologies.
 
-A short description of the project.
 
-## Project Organization
+Today, companies such [cloudflare](https://blog.cloudflare.com/firewall-for-ai)  offer solutions to detect prompt injections attacks , and interest in protection keeps increasing
 
-```
-├── LICENSE            <- Open-source license if one is chosen
-├── Makefile           <- Makefile with convenience commands like `make data` or `make train`
-├── README.md          <- The top-level README for developers using this project.
-├── data
-│   ├── external       <- Data from third party sources.
-│   ├── interim        <- Intermediate data that has been transformed.
-│   ├── processed      <- The final, canonical data sets for modeling.
-│   └── raw            <- The original, immutable data dump.
-│
-├── docs               <- A default mkdocs project; see mkdocs.org for details
-│
-├── models             <- Trained and serialized models, model predictions, or model summaries
-│
-├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-│                         the creator's initials, and a short `-` delimited description, e.g.
-│                         `1.0-jqp-initial-data-exploration`.
-│
-├── pyproject.toml     <- Project configuration file with package metadata for prompt_security
-│                         and configuration for tools like black
-│
-├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-│
-├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures        <- Generated graphics and figures to be used in reporting
-│
-├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-│                         generated with `pip freeze > requirements.txt`
-│
-├── setup.cfg          <- Configuration file for flake8
-│
-└── prompt_security                <- Source code for use in this project.
-    │
-    ├── __init__.py    <- Makes prompt_security a Python module
-    │
-    ├── data           <- Scripts to download or generate data
-    │   └── make_dataset.py
-    │
-    ├── features       <- Scripts to turn raw data into features for modeling
-    │   └── build_features.py
-    │
-    ├── models         <- Scripts to train models and then use trained models to make
-    │   │                 predictions
-    │   ├── predict_model.py
-    │   └── train_model.py
-    │
-    └── visualization  <- Scripts to create exploratory and results oriented visualizations
-        └── visualize.py
-```
 
---------
+This project offers an evaluation of 3 types of detectors
 
+1. Perplexity based detector
+2. Classical nlp based detector
+3. Embedding based detector
+
+
+Moreover, we evaluate the strengths and weaknesses of each type of detector ,specfilally in relation to the following attack types:
+* [GCG](https://arxiv.org/pdf/2307.15043)
+* Peraphrase attack 
+
+
+# Datasets
+This project uses 3 datasets of adverserial samples:
+
+* Peraphrase attack generation dataset : we use as a base couple of prompt injections and we generate variations using different  detection methods.The dataset can be found at : https://www.kaggle.com/datasets/arielzilber/prompt-injection-peraphrase-attack
+
+* Suffix dataset : we follow the   [GCG](https://arxiv.org/pdf/2307.15043) paper and generate a suffix attack dataset.The dataset can be found at : https://www.kaggle.com/datasets/arielzilber/prompt-injection-suffix-attack
+
+* Known prompt injection datasets : we gathered all the exisiting adverserial samples datasets avaliable on kaggle and on huggingface.The dataset can be found at : https://www.kaggle.com/datasets/arielzilber/prompt-injection-in-the-wild
+
+
+And the following benign dataset:
+
+https://www.kaggle.com/datasets/arielzilber/prompt-injection-benign-evaluation-framework
