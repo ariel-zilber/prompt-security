@@ -4,3 +4,22 @@ isort
 pip
 python-dotenv
 -e .
+transformers
+colab-xterm
+langchain
+langchain-experimental
+googletrans==4.0.0-rc1
+sentence-transformers
+kaggle
+transformers
+umap-learn
+plotly
+wizmap
+gensim
+bertopic
+spaCy
+livelossplot
+jailbreakbench
+datasets
+json_fix
+seaborn
