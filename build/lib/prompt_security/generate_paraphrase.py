@@ -9,9 +9,9 @@ from prompt_security.mutators.llm_mutator import AttackerLLMBasicPromptMutator
 from prompt_security.mutators.roundtrip_mutator import RoundTripPromptMutator
 from prompt_security.mutators.typo_mutator import TypoPromptMutator
 from prompt_security.mutators.utils import mutate_all
-
-
 import pandas as pd
+
+
 def get_sig(sample:str)->str:
     # Encode the text to bytes
     text_bytes = sample.encode('utf-8')
@@ -66,5 +66,3 @@ def generate_dataset(texts,file_name):
     results.to_csv(file_name+".csv")
     return results
 
-
-generate_dataset(texts,"example")

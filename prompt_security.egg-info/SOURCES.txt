@@ -13,7 +13,9 @@ prompt_security/evaluators/__init__.py
 prompt_security/evaluators/base.py
 prompt_security/evaluators/gpt2_perplexity.py
 prompt_security/evaluators/gpt2_sequence_length.py
+prompt_security/evaluators/llm_evaluator.py
 prompt_security/evaluators/mini_llm_perplexity.py
+prompt_security/evaluators/sha256_evaluator.py
 prompt_security/evaluators/utils.py
 prompt_security/mutators/__init__.py
 prompt_security/mutators/base.py

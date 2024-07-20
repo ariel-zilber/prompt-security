@@ -90,3 +90,51 @@ class AttackerLLMBasicPromptMutator(PromptMutator):
     return variation
   def get_name(self):
     return 'AttackerLLMBasicPromptMutator'
+
+
+
+class LLMRephrasePromptMutator(PromptMutator):
+  def __init__(self,adverserial_model_name=ADVERSERIAL_MODEL_NAME,evaluator_model_name=EVALUATOR_MODEL_NAME,template=DEFAULT_TEMPLATE,
+               llm_options=DEFAULT_OPTIONS,url=DEFAULT_URL):
+    self.adverserial_model_name=adverserial_model_name
+    self.evaluator_model_name=evaluator_model_name
+    self.template=template
+    self.llm_options=llm_options
+    self.url=url
+
+  def __validate(self,sentance):
+
+      payload={
+      "model": self.evaluator_model_name,
+      "prompt": self.template+sentance,
+      "stream": False,
+      }
+      gen_str=   json.loads(requests.post(self.url, json=payload).text)['response']
+
+      if  not any([prefix in gen_str for prefix in TEST_PREFIXES]):
+          return True
+      for prefix in TEST_PREFIXES:
+          if gen_str.startswith(prefix):
+              return True
+
+      for sub_str in TEST_CONTAINS:
+          if sub_str in gen_str:
+              return True
+
+      return False
+
+  def __get_variation(self,sentance):
+      payload={
+      "model": self.adverserial_model_name,
+      "prompt": self.template+sentance,
+      "stream": False,
+      "options": self.llm_options
+      }
+      response=json.loads(requests.post(self.url, json=payload).text)
+      return   response['response']
+
+  def mutate(self,sample:str)->str:
+    return self.__get_variation(sample)
+
+  def get_name(self):
+    return 'LLMRephrasePromptMutator'
