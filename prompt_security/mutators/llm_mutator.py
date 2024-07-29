@@ -35,6 +35,7 @@ TEST_CONTAINS=[
     "I cannot fulfill your request.",
     "I cannot fulfill"
 ]
+DEFAULT_NAME='llm_peraphrase_prompt_mutator'
 
 
 class AttackerLLMBasicPromptMutator(PromptMutator):
@@ -92,15 +93,18 @@ class AttackerLLMBasicPromptMutator(PromptMutator):
     return 'AttackerLLMBasicPromptMutator'
 
 
-
-class LLMRephrasePromptMutator(PromptMutator):
-  def __init__(self,adverserial_model_name=ADVERSERIAL_MODEL_NAME,evaluator_model_name=EVALUATOR_MODEL_NAME,template=DEFAULT_TEMPLATE,
-               llm_options=DEFAULT_OPTIONS,url=DEFAULT_URL):
+class LLMPromptMutator(PromptMutator):
+  def __init__(self,adverserial_model_name=ADVERSERIAL_MODEL_NAME,evaluator_model_name=EVALUATOR_MODEL_NAME,
+               template=DEFAULT_TEMPLATE,
+               llm_options=DEFAULT_OPTIONS,url=DEFAULT_URL,
+               name=DEFAULT_NAME
+               ):
     self.adverserial_model_name=adverserial_model_name
     self.evaluator_model_name=evaluator_model_name
     self.template=template
     self.llm_options=llm_options
     self.url=url
+    self.name=name
 
   def __validate(self,sentance):
 
@@ -137,4 +141,4 @@ class LLMRephrasePromptMutator(PromptMutator):
     return self.__get_variation(sample)
 
   def get_name(self):
-    return 'LLMRephrasePromptMutator'
+      return self.name
