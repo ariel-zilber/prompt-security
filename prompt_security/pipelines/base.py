@@ -27,7 +27,6 @@ class Pipeline:
 
         for i in tqdm.tqdm(range(len(prompts))):
             if i in result["idx"]:
-                print(i)
                 continue
 
             result['idx'].append(i)
@@ -37,8 +36,14 @@ class Pipeline:
             mutated_prompt=prompts[i]
             names_of_mutations=[]
             for mutator in self.mutators:
-                mutated_prompt=mutator.mutate(mutated_prompt)
-                names_of_mutations.append(mutator.get_name())
+                try:
+                    mutated_prompt=mutator.mutate(mutated_prompt)
+                    names_of_mutations.append(mutator.get_name())
+                except Exception as e:
+                    mutated_prompt=None
+                    names_of_mutations.append(mutator.get_name())
+                    continue
+                    
             result['MutatedPrompt'].append(mutated_prompt)
             result['NamesOfMutations'].append("|".join(names_of_mutations))
 
@@ -61,6 +66,7 @@ class Pipeline:
             result['MutatedPrompt'].append(prompt)
             for evaluator in self.evaluators:
                 result[evaluator.get_name()].append(evaluator.eval_sample(prompt))
+
 
             with open(output_path,'wb') as f:
                 pickle.dump(result, f, protocol=pickle.HIGHEST_PROTOCOL)

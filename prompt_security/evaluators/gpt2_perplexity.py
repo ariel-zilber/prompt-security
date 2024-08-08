@@ -18,7 +18,7 @@ class GPT2PerplexityEvaluator(PromptEvaluator):
     # Calculate the loss
     loss = outputs.loss
     perplexity = torch.exp(loss)
-    return  perplexity
+    return  float(perplexity)
 
 
   def eval_sample(self,sample):

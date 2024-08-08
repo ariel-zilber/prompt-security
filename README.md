@@ -6,9 +6,12 @@ Prompt injection is a technique used to manipulate language models or AI systems
 Today, companies such [cloudflare](https://blog.cloudflare.com/firewall-for-ai)  offer solutions to detect prompt injections attacks , and interest in protection keeps increasing
 
 
-This project offers an evaluation of 3 types of detectors
+This project offers an evaluation of 2 types of detectors
 
-1. Perplexity based detector
+1. Perplexity based detector for GCG based attacks
+
+Also we evaluate the capabilites of 3 types of detectors for general case(akin to signature based in WAF) attacks:
+1. Transformers based detector
 2. Classical nlp based detector
 3. Embedding based detector
 
@@ -34,10 +37,21 @@ https://www.kaggle.com/datasets/arielzilber/prompt-injection-benign-evaluation-f
 
 # Notebooks
 
-1. [detecting language model attack](/notebooks/detecting_language_model_attack.ipynb)
+1. [Dataset preprocessing](/notebooks/1_dataset_preproccessing.ipynb)
 
-2. [generate adverserial suffix dataset](/notebooks/generate_adverserial_suffix_dataset.ipynb)
+2. [generate adverserial suffix dataset](/notebooks/2_generate_adverserial_suffix_dataset.ipynb)
 
-3. [perphrase attack generation](/notebooks/perphrase_attack_generation.ipynb)
+3. [perphrase attack generation](/notebooks/3_paraphrase_attack_generation.ipynb)
 
-4. [dataset preproccessing](/notebooks/dataset_preproccessing.ipynb)
+4. [EDA](/notebooks/4_eda.ipynb)
+
+5. [Perplexity classifer](/notebooks/5_perplexity_classifer.ipynb)
+
+
+6. [Embedding classifer](/notebooks/6_embedding_classifer.ipynb)
+
+
+7. [Classical NLP classifer](/notebooks/7_nlp_classical_classifier.ipynb)
+
+
+8. [Transformer classifer](/notebooks/8_nlp_modern_classifier.ipynb)
