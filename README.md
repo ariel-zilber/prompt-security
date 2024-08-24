@@ -31,49 +31,20 @@ This GitHub project provides a comprehensive dataset and analysis of jailbreak a
 |                           | Context-Distillation                     | [Askell et al., 2021](https://example.com/context-distillation)         | ❌     |
 
 
-## Metrics for Comparing Attacks
+### Metrics
 
-1. **Attack Success Rate (ASR)**
-   - **Definition:** Percentage of adversarial inputs that successfully fool the model into making incorrect predictions.
-   - **Importance:** Higher ASR indicates a more effective attack.
-
-2. **Perturbation Magnitude**
-   - **Definition:** Degree of change applied to the original input, measured using norms like L2 or L∞.
-   - **Importance:** Lower perturbation magnitudes are preferred as they indicate subtler attacks.
-
-3. **Query Efficiency**
-   - **Definition:** Number of queries made to the model during the attack process.
-   - **Importance:** Fewer queries indicate a more efficient attack, especially in black-box scenarios.
-
-4. **Transferability Rate**
-   - **Definition:** Success rate of adversarial examples on different models.
-   - **Importance:** Higher transferability means the attack is more generalized.
-
-5. **Robustness to Defenses**
-   - **Definition:** How well the attack bypasses existing defense mechanisms.
-   - **Importance:** Effective attacks remain potent despite defenses.
-
-## Metrics for Comparing Defenses
-
-1. **Defense Success Rate (DSR)**
-   - **Definition:** Percentage of adversarial inputs correctly classified after applying the defense.
-   - **Importance:** Higher DSR indicates a more effective defense.
-
-2. **Model Accuracy**
-   - **Definition:** Overall accuracy on clean and adversarially perturbed inputs after applying the defense.
-   - **Importance:** A good defense maintains high accuracy on clean inputs while enhancing robustness.
-
-3. **Computational Overhead**
-   - **Definition:** Additional computational resources required to implement the defense.
-   - **Importance:** Lower overhead makes the defense more practical for real-time applications.
-
-4. **Adversarial Robustness (AR)**
-   - **Definition:** Decrease in model accuracy when subjected to adversarial examples.
-   - **Importance:** A robust defense should minimize AR, ensuring stable model performance.
-
-5. **Generalization Across Attacks**
-   - **Definition:** Defense effectiveness against a variety of attack techniques.
-   - **Importance:** A good defense should protect against multiple adversarial strategies, not just specific ones.
+| Metric                        | Definition                                                                | Importance                                                              | Type     |
+|-------------------------------|---------------------------------------------------------------------------|-------------------------------------------------------------------------|----------|
+| **Attack Success Rate (ASR)** | Percentage of adversarial inputs that successfully fool the model.        | Higher ASR indicates a more effective attack.                           | Attack   |
+| **Perturbation Magnitude**    | Degree of change applied to the original input, measured by norms like L2 or L∞. | Lower magnitude indicates a subtler, harder-to-detect attack.          | Attack   |
+| **Query Efficiency**          | Number of queries made to the model during the attack.                    | Fewer queries indicate a more efficient attack, important in black-box scenarios. | Attack   |
+| **Transferability Rate**      | Success rate of adversarial examples on different models.                 | Higher transferability means the attack is more generalized.            | Attack   |
+| **Robustness to Defenses**    | How well the attack bypasses existing defense mechanisms.                 | Effective attacks remain potent despite defenses.                      | Attack   |
+| **Defense Success Rate (DSR)**| Percentage of adversarial inputs correctly classified after applying the defense. | Higher DSR indicates a more effective defense.                         | Defense  |
+| **Model Accuracy**            | Overall accuracy on clean and adversarially perturbed inputs post-defense. | A good defense maintains high accuracy on clean inputs while improving robustness. | Defense  |
+| **Computational Overhead**    | Additional computational resources required to implement the defense.     | Lower overhead makes the defense more practical for real-time use.      | Defense  |
+| **Adversarial Robustness (AR)**| Decrease in model accuracy when subjected to adversarial examples.        | A robust defense should minimize AR, ensuring stable model performance. | Defense  |
+| **Generalization Across Attacks** | Defense effectiveness against a variety of attack techniques.           | A good defense should protect against multiple adversarial strategies.  | Defense  |
 
 
 ---
